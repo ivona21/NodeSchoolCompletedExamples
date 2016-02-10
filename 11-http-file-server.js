@@ -1,0 +1,9 @@
+var http = require('http');
+var fs = require('fs');
+var port = process.argv[2];
+var fileLocation = process.argv[3];
+
+http.createServer(function(request, response){
+    response.writeHead(200, {'content-type' : 'text/plain'})
+    fs.createReadStream(fileLocation).pipe(response);
+}).listen(port);
